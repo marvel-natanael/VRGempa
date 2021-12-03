@@ -5,14 +5,30 @@ using UnityEngine;
 public class ShakeManager : MonoBehaviour
 {
     private Shake shake;
+    private int presses = 0;
 
     void Start()
     {
         shake = GameObject.FindGameObjectWithTag("Shake").GetComponent<Shake>();
     }
 
-    public void shakeObj()
+    public void shakeObj(float magnitude)
     {
-        StartCoroutine(shake.ShakeCam(3.0f, 0.01f));
+        StartCoroutine(shake.ShakeCam(magnitude));
+    }
+
+    public void onPressed()
+    {
+        presses++;
+        Shake.presses = presses;
+        Debug.Log(Shake.presses);
+    }
+
+
+    public void onLift()
+    {
+        presses = 0;
+        Shake.presses = presses;
+        Debug.Log(Shake.presses);
     }
 }
