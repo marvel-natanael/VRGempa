@@ -1,19 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 
-
-public class Shake : Quake
+public class Quake : MonoBehaviour
 {
-    void Awake()
+    public Quake()
     {
-        Quake quake = new Quake();
+        Debug.Log("Quake constructor called");
     }
 
-    public override IEnumerator ShakeObj(float magnitude, Vector3 orignalPosition)
+    public virtual IEnumerator ShakeObj(float magnitude)
     {
+        Vector3 orignalPosition = this.gameObject.transform.position;
         float duration = 3.0f;
         float elapsed = 0f;
 
@@ -28,4 +26,10 @@ public class Shake : Quake
         }
         transform.position = orignalPosition;
     }
+
+    public virtual IEnumerator ShakeObj(float magnitude, Vector3 orignalPosition)
+    {
+        yield return null;
+    }
 }
+

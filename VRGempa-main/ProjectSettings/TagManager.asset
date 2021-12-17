@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shake
+  - Destroy
   layers:
   - Default
   - TransparentFX
